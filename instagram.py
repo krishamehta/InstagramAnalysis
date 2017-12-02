@@ -3,23 +3,28 @@ from IPython.display import Image
 from IPython.display import display
 
 from InstagramAPI import InstagramAPI
-username=""
-InstagramAPI = InstagramAPI(username,"password")
+username="krisha_mehta"
+InstagramAPI = InstagramAPI(username,"prideandprejudice")
 InstagramAPI.login()
 
 InstagramAPI.getProfileData()
 result = InstagramAPI.LastJson
-print(result)
+#print(result)
 #All the results are stored in Json format
 
 #print (result['user']['biography'])
 
 InstagramAPI.timelineFeed()
-result1 = InstagramAPI.LastJson
+#result1 = InstagramAPI.LastJson
 #print(result1[text])
 
+#Get_posts_from_list()
+#Get_url()
+#image_urls = InstagramAPI.LastJson
+#image_urls
 
-#List of all the posts
+
+
 import time
 myposts=[]
 has_more_posts = True
@@ -35,6 +40,8 @@ while has_more_posts:
     myposts.extend(InstagramAPI.LastJson['items']) #merge lists
     time.sleep(2) # Slows the script down to avoid flooding the servers 
     
-
+profile_pic = myposts[0]['caption']['user']['profile_pic_url']
+img = Image(profile_pic)
+display(profile_pic)
 
 
